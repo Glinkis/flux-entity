@@ -6,5 +6,6 @@
     "declarationDir": "dist/types",
     "outDir": "dist/lib",
     "strict": true
-  }
+  },
+  "include": ["src"]
 }
