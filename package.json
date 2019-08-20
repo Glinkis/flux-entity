@@ -9,7 +9,7 @@
   "author": "Victor Glindås <glinkis@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc && tsc --outDir dist/es --module esnext"
+    "build": "tsc && tsc --outDir dist/es -t esnext -m esnext"
   },
   "devDependencies": {
     "typescript": "^3.5.3"
