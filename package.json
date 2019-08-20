@@ -2,15 +2,19 @@
   "name": "flux-entity",
   "version": "1.0.0",
   "description": "Utility library for the flux entity pattern",
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/Glinkis/flux-entity.git",
   "author": "Victor Glindås <glinkis@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc && tsc --outDir dist/es --module esnext"
   },
   "devDependencies": {
     "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "redux": "^4.0.4"
   }
 }
