@@ -3,6 +3,7 @@ import { arrayInsert, arrayRemove } from './array'
 type Key<T> = { [K in keyof T]: T[K] extends string ? K : never }[keyof T]
 
 export interface Entity<T, K extends Key<T>> {
+  // @ts-ignore
   readonly all: Record<T[K], T>
   readonly ids: T[K][]
   readonly key: K
@@ -10,7 +11,8 @@ export interface Entity<T, K extends Key<T>> {
 
 export function createEntityFactory<T>() {
   return function createEntity<K extends Key<T>>(key: K): Entity<T, K> {
-    return { all: {} as any, ids: [], key: key }
+    // @ts-ignore
+    return { all: {}, ids: [], key: key }
   }
 }
 
