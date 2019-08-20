@@ -10,6 +10,7 @@
   "author": "Victor Glindås <glinkis@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "tsc --watch",
     "build": "tsc && tsc --outDir dist/es -t esnext -m esnext"
   },
   "files": [
