@@ -5,12 +5,16 @@
   "main": "dist/lib/index.js",
   "module": "dist/es/index.js",
   "types": "dist/types/index.d.ts",
+  "bugs": "https://github.com/Glinkis/flux-entity/issues",
   "repository": "https://github.com/Glinkis/flux-entity.git",
   "author": "Victor Glindås <glinkis@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "tsc && tsc --outDir dist/es -t esnext -m esnext"
   },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "typescript": "^3.5.3"
   }
