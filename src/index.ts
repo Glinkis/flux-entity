@@ -20,18 +20,26 @@ export function createEntityFactory<T extends Value>() {
   }
 }
 
-export function insert<T extends Value, K extends Key<T>>(entity: Entity<T, K>, ...values: T[]) {
+export function insertValue<T extends Value, K extends Key<T>>(entity: Entity<T, K>, value: T) {
+  const id = value[entity.key]
+  entity.all[id] = value
+  arrayInsert(entity.ids, id)
+}
+
+export function insertValues<T extends Value, K extends Key<T>>(entity: Entity<T, K>, values: T[]) {
   for (const value of values) {
-    const id = value[entity.key]
-    entity.all[id] = value
-    arrayInsert(entity.ids, id)
+    insertValue(entity, value)
   }
 }
 
-export function remove<T extends Value, K extends Key<T>>(entity: Entity<T, K>, ...values: T[]) {
+export function removeValue<T extends Value, K extends Key<T>>(entity: Entity<T, K>, value: T) {
+  const id = value[entity.key]
+  delete entity.all[id]
+  arrayRemove(entity.ids, id)
+}
+
+export function removeValues<T extends Value, K extends Key<T>>(entity: Entity<T, K>, values: T[]) {
   for (const value of values) {
-    const id = value[entity.key]
-    delete entity.all[id]
-    arrayRemove(entity.ids, id)
+    removeValue(entity, value)
   }
 }
