@@ -1,6 +1,6 @@
 import { arrayInsert, arrayRemove } from './array'
 
-type Value = { [K in keyof any]: keyof any }
+type Value = Record<any, any>
 
 type Key<T> = { [K in keyof T]: T[K] extends keyof any ? K : never }[keyof T]
 
