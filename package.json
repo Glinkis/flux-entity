@@ -12,7 +12,7 @@
   "scripts": {
     "start": "tsc --watch",
     "build": "tsc && tsc --outDir dist/es -t esnext -m esnext",
-    "test": "mocha --require ts-node/register test/**/*.test.ts",
+    "test": "mocha --require ts-node/register test/**/*.ts",
     "test-watch": "yarn test --watch --watch-extensions ts"
   },
   "files": [
