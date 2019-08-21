@@ -11,12 +11,19 @@
   "license": "MIT",
   "scripts": {
     "start": "tsc --watch",
-    "build": "tsc && tsc --outDir dist/es -t esnext -m esnext"
+    "build": "tsc && tsc --outDir dist/es -t esnext -m esnext",
+    "test": "mocha --require ts-node/register test/**/*.test.ts",
+    "test-watch": "yarn test --watch --watch-extensions ts"
   },
   "files": [
     "dist"
   ],
   "devDependencies": {
+    "@types/chai": "^4.2.0",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   }
 }
