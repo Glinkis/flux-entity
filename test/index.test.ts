@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { createEntityFactory, insertValue } from '../src'
+import { createEntityFactory, insertValue, removeValue } from '../src'
 
 interface Value {
   id: number
@@ -31,5 +31,18 @@ describe('insertValue', () => {
 
     expect(entity.ids).to.eql([0])
     expect(entity.all).to.eql({ 0: value })
+  })
+})
+
+describe('removeValue', () => {
+  it('should insert a value into the entity', () => {
+    const entity = createEntityFactory<Value>()('id')
+    const value = { id: 0 }
+
+    insertValue(entity, value)
+    removeValue(entity, value)
+
+    expect(entity.ids).to.eql([])
+    expect(entity.all).to.eql({})
   })
 })
