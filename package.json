@@ -14,7 +14,7 @@
     "build": "tsc && tsc --outDir dist/es -t esnext -m esnext",
     "test": "mocha --require ts-node/register test/**/*.ts",
     "test-watch": "yarn test --watch --watch-extensions ts",
-    "prepublish": "rimraf dist && yarn build"
+    "prepublishOnly": "rimraf dist && yarn build"
   },
   "files": [
     "dist"
