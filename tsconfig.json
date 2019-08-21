@@ -7,5 +7,5 @@
     "outDir": "dist/lib",
     "strict": true
   },
-  "include": ["src", "test/index.test.ts"]
+  "include": ["src"]
 }
