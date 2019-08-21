@@ -35,7 +35,7 @@ describe('insertValue', () => {
 })
 
 describe('removeValue', () => {
-  it('should insert a value into the entity', () => {
+  it('should remove a value from the entity', () => {
     const entity = createEntityFactory<Value>()('id')
     const value = { id: 0 }
 
