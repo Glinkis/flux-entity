@@ -4,7 +4,9 @@ type Value = Record<any, any>
 
 type Key<T> = { [K in keyof T]: T[K] extends keyof any ? K : never }[keyof T]
 
-export interface Entity<T extends Value, K extends Key<T>> {
+type EntityType<E> = E extends Entity<infer T> ? T : never
+
+export interface Entity<T extends Value = any, K extends Key<T> = Key<T>> {
   readonly all: Record<T[K], T>
   readonly ids: T[K][]
   readonly key: K
@@ -20,25 +22,25 @@ export function createEntityFactory<T extends Value>() {
   }
 }
 
-export function insertValue<T extends Value, K extends Key<T>>(entity: Entity<T, K>, value: T) {
+export function insertValue<E extends Entity>(entity: E, value: EntityType<E>) {
   const id = value[entity.key]
   entity.all[id] = value
   arrayInsert(entity.ids, id)
 }
 
-export function insertValues<T extends Value, K extends Key<T>>(entity: Entity<T, K>, values: T[]) {
+export function insertValues<E extends Entity>(entity: E, values: EntityType<E>[]) {
   for (const value of values) {
     insertValue(entity, value)
   }
 }
 
-export function removeValue<T extends Value, K extends Key<T>>(entity: Entity<T, K>, value: T) {
+export function removeValue<E extends Entity>(entity: E, value: EntityType<E>) {
   const id = value[entity.key]
   delete entity.all[id]
   arrayRemove(entity.ids, id)
 }
 
-export function removeValues<T extends Value, K extends Key<T>>(entity: Entity<T, K>, values: T[]) {
+export function removeValues<E extends Entity>(entity: E, values: EntityType<E>[]) {
   for (const value of values) {
     removeValue(entity, value)
   }
