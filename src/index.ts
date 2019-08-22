@@ -1,12 +1,4 @@
-import { arrayInsert, arrayRemove } from './array'
-
-type Value = Record<any, any>
-
-type Key<T> = { [K in keyof T]: T[K] extends PropertyKey ? K : never }[keyof T]
-
-type ValueType<E> = E extends Entity<infer T> ? T : never
-
-type KeyType<E> = E extends Entity<infer T, infer K> ? T[K] : never
+import { Value, Key, ValueType, KeyType } from './type-helpers'
 
 export interface Entity<T extends Value = any, K extends Key<T> = Key<T>> {
   readonly all: Record<T[K], T>
@@ -24,11 +16,25 @@ export function createEntityFactory<T extends Value>() {
   }
 }
 
+export function insertIntoArray<T>(array: T[], ...values: T[]) {
+  for (const value of values) {
+    const index = array.indexOf(value)
+    index < 0 && array.push(value)
+  }
+}
+
+export function removeFromArray<T>(array: T[], ...values: T[]) {
+  for (const value of values) {
+    const index = array.indexOf(value)
+    index < 0 || array.splice(index, 1)
+  }
+}
+
 export function insertIntoEntity<E extends Entity>(entity: E, ...values: ValueType<E>[]) {
   for (const value of values) {
     const id = value[entity.key]
     entity.all[id] = value
-    arrayInsert(entity.ids, id)
+    insertIntoArray(entity.ids, id)
   }
 }
 
@@ -36,13 +42,13 @@ export function removeFromEntity<E extends Entity>(entity: E, ...values: ValueTy
   for (const value of values) {
     const id = value[entity.key]
     delete entity.all[id]
-    arrayRemove(entity.ids, id)
+    insertIntoArray(entity.ids, id)
   }
 }
 
 export function removeFromEntityById<E extends Entity>(entity: E, ...ids: KeyType<E>[]) {
   for (const id of ids) {
     delete entity.all[id]
-    arrayRemove(entity.ids, id)
+    insertIntoArray(entity.ids, id)
   }
 }
