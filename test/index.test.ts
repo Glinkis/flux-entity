@@ -4,6 +4,7 @@ import {
   createEntityFactory,
   insertIntoArray,
   removeFromArray,
+  clearEntity,
   insertIntoEntity,
   removeFromEntity,
   removeFromEntityById,
@@ -43,6 +44,19 @@ describe('removeFromArray', () => {
     const array: number[] = [0, 1, 2]
     removeFromArray(array, 0, 1, 2)
     expect(array).to.eql([])
+  })
+})
+
+describe('clearEntity', () => {
+  it('should remove all values from the entity', () => {
+    const entity = createEntityFactory<Value>()('id')
+    const value = { id: 0, name: 'Bob' }
+
+    insertIntoEntity(entity, value)
+    clearEntity(entity)
+
+    expect(entity.ids).to.eql([])
+    expect(entity.all).to.eql({})
   })
 })
 
