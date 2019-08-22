@@ -42,6 +42,9 @@ removeFromArray(array, ...values)
 // Removes all values from an entity
 clearEntity(entity)
 
+// Returns a copy of the entity with all values
+copyEntity(entity)
+
 // Inserts values into an entity
 insertIntoEntity(entity, ...values)
 
