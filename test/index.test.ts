@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { createEntityFactory, insertIntoEntity, removeFromEntity } from '../src'
+import { createEntityFactory, insertIntoEntity, removeFromEntity, removeFromEntityById } from '../src'
 
 interface Value {
   id: number
@@ -34,13 +34,26 @@ describe('insertIntoEntity', () => {
   })
 })
 
-describe('removeValue', () => {
+describe('removeFromEntity', () => {
   it('should remove a value from the entity', () => {
     const entity = createEntityFactory<Value>()('id')
     const value = { id: 0, name: 'Bob' }
 
     insertIntoEntity(entity, value)
     removeFromEntity(entity, value)
+
+    expect(entity.ids).to.eql([])
+    expect(entity.all).to.eql({})
+  })
+})
+
+describe('removeFromEntityById', () => {
+  it('should remove a value from the entity by its id', () => {
+    const entity = createEntityFactory<Value>()('id')
+    const value = { id: 0, name: 'Bob' }
+
+    insertIntoEntity(entity, value)
+    removeFromEntityById(entity, value.id)
 
     expect(entity.ids).to.eql([])
     expect(entity.all).to.eql({})
