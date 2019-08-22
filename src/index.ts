@@ -108,3 +108,9 @@ export function removeFromEntityById<E extends Entity>(entity: E, ...ids: KeyTyp
     removeFromArray(entity.ids, id)
   }
 }
+
+export function filterEntity<T>(entity: Entity<T>, key: keyof T, keyValue: T[typeof key]) {
+  const result = createEntityFactory<T>()(entity.key)
+  foreach(entity, value => value[key] === keyValue && insertIntoEntity(result as any, value))
+  return result
+}
