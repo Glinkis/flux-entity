@@ -1,4 +1,4 @@
-import { Entity, Value, Key, ValueType, KeyType } from './type-helpers'
+import { Entity, Key, KeyType, Value, ValueType } from './type-helpers'
 
 export { Entity }
 
