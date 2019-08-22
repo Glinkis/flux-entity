@@ -18,7 +18,7 @@ export function createEntityFactory<T extends Value>() {
       all: {},
       ids: [],
       key: key,
-    }
+    } as any
   }
 }
 
