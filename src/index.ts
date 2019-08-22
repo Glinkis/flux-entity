@@ -42,13 +42,13 @@ export function removeFromEntity<E extends Entity>(entity: E, ...values: ValueTy
   for (const value of values) {
     const id = value[entity.key]
     delete entity.all[id]
-    insertIntoArray(entity.ids, id)
+    removeFromArray(entity.ids, id)
   }
 }
 
 export function removeFromEntityById<E extends Entity>(entity: E, ...ids: KeyType<E>[]) {
   for (const id of ids) {
     delete entity.all[id]
-    insertIntoArray(entity.ids, id)
+    removeFromArray(entity.ids, id)
   }
 }

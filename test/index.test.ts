@@ -1,5 +1,13 @@
 import { expect } from 'chai'
-import { createEntityFactory, insertIntoEntity, removeFromEntity, removeFromEntityById } from '../src'
+
+import {
+  createEntityFactory,
+  insertIntoArray,
+  removeFromArray,
+  insertIntoEntity,
+  removeFromEntity,
+  removeFromEntityById,
+} from '../src'
 
 interface Value {
   id: number
@@ -19,6 +27,22 @@ describe('createEntity', () => {
       ids: [],
       all: {},
     })
+  })
+})
+
+describe('insertIntoArray', () => {
+  it('should insert values into the array', () => {
+    const array: number[] = []
+    insertIntoArray(array, 0, 1, 2)
+    expect(array).to.eql([0, 1, 2])
+  })
+})
+
+describe('removeFromArray', () => {
+  it('should insert values into the array', () => {
+    const array: number[] = [0, 1, 2]
+    removeFromArray(array, 0, 1, 2)
+    expect(array).to.eql([])
   })
 })
 
@@ -53,7 +77,7 @@ describe('removeFromEntityById', () => {
     const value = { id: 0, name: 'Bob' }
 
     insertIntoEntity(entity, value)
-    removeFromEntityById(entity, value.id)
+    removeFromEntityById(entity, 0)
 
     expect(entity.ids).to.eql([])
     expect(entity.all).to.eql({})
