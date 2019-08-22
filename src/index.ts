@@ -50,6 +50,19 @@ export function removeFromArray<T>(array: T[], ...values: T[]) {
 }
 
 /**
+ * Removes all values from an entity.
+ * Does not remove the key value.
+ *
+ * @param entity Entity to clear.
+ */
+export function clearEntity<E extends Entity>(entity: E) {
+  for (const id of entity.ids) {
+    delete entity.all[id]
+  }
+  entity.ids.length = 0
+}
+
+/**
  * Inserts values into an entity.
  *
  * @param entity Entity to insert into.

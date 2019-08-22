@@ -39,6 +39,9 @@ insertIntoArray(array, ...values)
 // Removes values from an array
 removeFromArray(array, ...values)
 
+// Removes all values from an entity
+clearEntity(entity)
+
 // Inserts values into an entity
 insertIntoEntity(entity, ...values)
 
