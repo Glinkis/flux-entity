@@ -51,12 +51,34 @@ export function removeFromArray<T>(array: T[], ...values: T[]) {
  * Does not remove the key value.
  *
  * @param entity Entity to clear.
+ *
+ * @example
+ * clearEntity(people)
  */
 export function clearEntity<E extends Entity>(entity: E) {
   for (const id of entity.ids) {
     delete entity.all[id]
   }
   entity.ids.length = 0
+}
+
+/**
+ * Copies an entity with all its values.
+ * The values themselves are not copied,
+ * so they keep their referential equality.
+ *
+ * @param entity Entity to copy.
+ *
+ * @example
+ * copyEntity(people)
+ */
+export function copyEntity<T>(entity: Entity<T>) {
+  const copy = createEntityFactory<T>()(entity.key)
+  for (const id of entity.ids) {
+    copy.ids.push(id)
+    copy.all[id] = entity.all[id]
+  }
+  return copy
 }
 
 /**
@@ -107,10 +129,4 @@ export function removeFromEntityById<E extends Entity>(entity: E, ...ids: KeyTyp
     delete entity.all[id]
     removeFromArray(entity.ids, id)
   }
-}
-
-export function filterEntity<T>(entity: Entity<T>, key: keyof T, keyValue: T[typeof key]) {
-  const result = createEntityFactory<T>()(entity.key)
-  foreach(entity, value => value[key] === keyValue && insertIntoEntity(result as any, value))
-  return result
 }

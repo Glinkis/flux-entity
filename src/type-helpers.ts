@@ -8,6 +8,6 @@ export type Key<T> = { [K in keyof T]: T[K] extends PropertyKey ? K : never }[ke
 
 export type KeyType<E> = E extends Entity<infer T, infer K> ? T[K] : never
 
-export type Value = Record<any, any>
+export type Value = Record<PropertyKey, any>
 
 export type ValueType<E> = E extends Entity<infer T> ? T : never
