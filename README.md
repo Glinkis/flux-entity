@@ -11,7 +11,7 @@ Utility library for the flux entity pattern
 
 ## Motivation
 
-A common pattern when working with a flux-based system such as [Redux](https://redux.js.org) is to a normalized registry of objects, keyed by some unique value.
+A common pattern when working with a flux-based system such as [Redux](https://redux.js.org) is to use a normalized registry of objects, keyed by some unique value.
 
 ## Installation
 
