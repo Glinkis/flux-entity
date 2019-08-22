@@ -33,6 +33,12 @@ yarn add flux-entity
 // Returns a function for creating entities
 createEntityFactory()
 
+// Inserts values into an array
+insertIntoArray(array, ...values)
+
+// Removes values from an array
+removeFromArray(array, ...values)
+
 // Inserts values into an entity
 insertIntoEntity(entity, ...values)
 
