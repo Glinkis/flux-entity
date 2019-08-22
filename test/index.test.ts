@@ -15,9 +15,9 @@ describe('createEntityFactory', () => {
 describe('createEntity', () => {
   it('should create an entity object', () => {
     expect(createEntityFactory<Value>()('id')).to.eql({
-      all: {},
-      ids: [],
       key: 'id',
+      ids: [],
+      all: {},
     })
   })
 })

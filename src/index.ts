@@ -17,9 +17,9 @@ export interface Entity<T extends Value = any, K extends Key<T> = Key<T>> {
 export function createEntityFactory<T extends Value>() {
   return function createEntity<K extends Key<T>>(key: K): Entity<T, K> {
     return {
-      all: {},
-      ids: [],
       key: key,
+      ids: [],
+      all: {},
     } as any
   }
 }
