@@ -2,7 +2,7 @@ import { arrayInsert, arrayRemove } from './array'
 
 type Value = Record<any, any>
 
-type Key<T> = { [K in keyof T]: T[K] extends keyof any ? K : never }[keyof T]
+type Key<T> = { [K in keyof T]: T[K] extends PropertyKey ? K : never }[keyof T]
 
 type EntityType<E> = E extends Entity<infer T> ? T : never
 
@@ -15,7 +15,7 @@ export interface Entity<T extends Value = any, K extends Key<T> = Key<T>> {
 export function createEntityFactory<T extends Value>() {
   return function createEntity<K extends Key<T>>(key: K): Entity<T, K> {
     return {
-      all: {} as Record<T[K], T>,
+      all: {},
       ids: [],
       key: key,
     }
