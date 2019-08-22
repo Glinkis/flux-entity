@@ -12,6 +12,18 @@ export function createEntityFactory<T extends Value>() {
   }
 }
 
+/**
+ * Inserts values into an array,
+ * skipping values that already exists.
+ *
+ * @param array Array to insert into.
+ * @param values Values to insert.
+ *
+ * @example
+ * const numbers = []
+ * insertIntoArray(numbers, 1, 2, 3, 4, 5)
+ * // numbers = [1, 2, 3, 4, 5]
+ */
 export function insertIntoArray<T>(array: T[], ...values: T[]) {
   for (const value of values) {
     const index = array.indexOf(value)
@@ -19,6 +31,17 @@ export function insertIntoArray<T>(array: T[], ...values: T[]) {
   }
 }
 
+/**
+ * Removes values from an array.
+ *
+ * @param array Array to remove from.
+ * @param values Values to remove.
+ *
+ * @example
+ * const numbers = [0, 1, 2, 3, 4, 5]
+ * removeFromArray(numbers, 0, 2, 4)
+ * // numbers = [1, 3, 5]
+ */
 export function removeFromArray<T>(array: T[], ...values: T[]) {
   for (const value of values) {
     const index = array.indexOf(value)
@@ -31,6 +54,9 @@ export function removeFromArray<T>(array: T[], ...values: T[]) {
  *
  * @param entity Entity to insert into.
  * @param values Values to insert.
+ *
+ * @example
+ * insertIntoEntity(people, matt, sam, liam)
  */
 export function insertIntoEntity<E extends Entity>(entity: E, ...values: ValueType<E>[]) {
   for (const value of values) {
