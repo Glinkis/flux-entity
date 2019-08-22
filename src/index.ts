@@ -22,26 +22,18 @@ export function createEntityFactory<T extends Value>() {
   }
 }
 
-export function insertValue<E extends Entity>(entity: E, value: EntityType<E>) {
-  const id = value[entity.key]
-  entity.all[id] = value
-  arrayInsert(entity.ids, id)
-}
-
-export function insertValues<E extends Entity>(entity: E, values: EntityType<E>[]) {
+export function insertIntoEntity<E extends Entity>(entity: E, ...values: EntityType<E>[]) {
   for (const value of values) {
-    insertValue(entity, value)
+    const id = value[entity.key]
+    entity.all[id] = value
+    arrayInsert(entity.ids, id)
   }
 }
 
-export function removeValue<E extends Entity>(entity: E, value: EntityType<E>) {
-  const id = value[entity.key]
-  delete entity.all[id]
-  arrayRemove(entity.ids, id)
-}
-
-export function removeValues<E extends Entity>(entity: E, values: EntityType<E>[]) {
+export function removeFromEntity<E extends Entity>(entity: E, ...values: EntityType<E>[]) {
   for (const value of values) {
-    removeValue(entity, value)
+    const id = value[entity.key]
+    delete entity.all[id]
+    arrayRemove(entity.ids, id)
   }
 }
