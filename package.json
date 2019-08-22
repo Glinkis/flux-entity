@@ -1,6 +1,6 @@
 {
   "name": "flux-entity",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Utility library for the flux entity pattern",
   "main": "dist/lib/index.js",
   "module": "dist/es/index.js",
