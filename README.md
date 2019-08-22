@@ -13,6 +13,36 @@ Utility library for the flux entity pattern
 
 A common pattern when working with a flux-based system such as [Redux](https://redux.js.org) is to a normalized registry of objects, keyed by some unique value.
 
+## Installation
+
+With npm
+
+```shell
+npm install --save flux-entity
+```
+
+With yarn
+
+```shell
+yarn add flux-entity
+```
+
+## API
+
+```typescript
+// Returns a function for creating entities
+createEntityFactory()
+
+// Inserts values into an entity
+insertIntoEntity(entity, ...values)
+
+// Removes values from an entity
+removeFromEntity(entity, ...values)
+
+// Removes values from an entity by their id
+removeFromEntityById(entity, ...ids)
+```
+
 ## Examples
 
 Say we have an object type `Person`.
