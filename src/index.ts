@@ -1,10 +1,6 @@
-import { Value, Key, ValueType, KeyType } from './type-helpers'
+import { Entity, Value, Key, ValueType, KeyType } from './type-helpers'
 
-export interface Entity<T extends Value = any, K extends Key<T> = Key<T>> {
-  readonly all: Record<T[K], T>
-  readonly ids: T[K][]
-  readonly key: K
-}
+export { Entity }
 
 export function createEntityFactory<T extends Value>() {
   return function createEntity<K extends Key<T>>(key: K): Entity<T, K> {

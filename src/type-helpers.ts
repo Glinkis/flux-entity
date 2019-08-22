@@ -1,4 +1,8 @@
-import { Entity } from '.'
+export interface Entity<T extends Value = any, K extends Key<T> = Key<T>> {
+  readonly all: Record<T[K], T>
+  readonly ids: T[K][]
+  readonly key: K
+}
 
 export type Value = Record<any, any>
 
