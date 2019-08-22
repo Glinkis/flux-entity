@@ -26,6 +26,12 @@ export function removeFromArray<T>(array: T[], ...values: T[]) {
   }
 }
 
+/**
+ * Inserts values into an entity.
+ *
+ * @param entity Entity to insert into.
+ * @param values Values to insert.
+ */
 export function insertIntoEntity<E extends Entity>(entity: E, ...values: ValueType<E>[]) {
   for (const value of values) {
     const id = value[entity.key]
@@ -34,6 +40,15 @@ export function insertIntoEntity<E extends Entity>(entity: E, ...values: ValueTy
   }
 }
 
+/**
+ * Removes values from an entity.
+ *
+ * @param entity Entity to remove from.
+ * @param values Values to remove.
+ *
+ * @example
+ * removeFromEntity(people, matt, sam, liam)
+ */
 export function removeFromEntity<E extends Entity>(entity: E, ...values: ValueType<E>[]) {
   for (const value of values) {
     const id = value[entity.key]
@@ -42,6 +57,15 @@ export function removeFromEntity<E extends Entity>(entity: E, ...values: ValueTy
   }
 }
 
+/**
+ * Removes values from an entity by matching IDs.
+ *
+ * @param entity Entity to remove from.
+ * @param ids IDs to match.
+ *
+ * @example
+ * removeFromEntityById(people, 0, 2, 6)
+ */
 export function removeFromEntityById<E extends Entity>(entity: E, ...ids: KeyType<E>[]) {
   for (const id of ids) {
     delete entity.all[id]
