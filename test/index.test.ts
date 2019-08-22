@@ -5,6 +5,7 @@ import {
   insertIntoArray,
   removeFromArray,
   clearEntity,
+  copyEntity,
   insertIntoEntity,
   removeFromEntity,
   removeFromEntityById,
@@ -57,6 +58,19 @@ describe('clearEntity', () => {
 
     expect(entity.ids).to.eql([])
     expect(entity.all).to.eql({})
+  })
+})
+
+describe('copyEntity', () => {
+  it('should copy an entity with all values', () => {
+    const entity = createEntityFactory<Value>()('id')
+    const value = { id: 0, name: 'Bob' }
+
+    insertIntoEntity(entity, value)
+    const copy = copyEntity(entity)
+
+    expect(copy.ids).to.eql([0])
+    expect(copy.all).to.eql({ 0: value })
   })
 })
 
