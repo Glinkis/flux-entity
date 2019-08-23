@@ -55,7 +55,7 @@ export function removeFromArray<T>(array: T[], ...values: T[]) {
  * @example
  * clearEntity(people)
  */
-export function clearEntity<E extends Entity>(entity: E) {
+export function clearEntity(entity: Entity) {
   for (const id of entity.ids) {
     delete entity.all[id]
   }

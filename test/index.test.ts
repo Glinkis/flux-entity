@@ -77,7 +77,7 @@ describe('copyEntity', () => {
 describe('insertIntoEntity', () => {
   it('should insert a value into the entity', () => {
     const entity = createEntityFactory<Value>()('id')
-    const value = { id: 0, name: 'Jane' }
+    const value = { id: 0, name: 'Bob' }
 
     insertIntoEntity(entity, value)
 
