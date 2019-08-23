@@ -4,8 +4,8 @@ export { Entity }
 
 /** */
 export function createEntityFactory<T extends Value>() {
-  return function createEntity<K extends Key<T>>(key: K): Entity<T, K> {
-    return { key, ids: [], all: {} } as any
+  return function createEntity<K extends Key<T>>(key: K) {
+    return { key, ids: [], all: {} as any } as Entity<T, K>
   }
 }
 

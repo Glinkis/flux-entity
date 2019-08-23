@@ -35,7 +35,7 @@ describe('createEntity', () => {
 describe('insertIntoArray', () => {
   it('should insert values into the array', () => {
     const array: number[] = []
-    insertIntoArray(array, 0, 1, 2)
+    insertIntoArray(array, [0, 1, 2])
     expect(array).to.eql([0, 1, 2])
   })
 })
