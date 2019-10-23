@@ -22,9 +22,12 @@ export function createEntityFactory<T extends Value>() {
  * // numbers = [1, 2, 3, 4, 5]
  */
 export function insertIntoArray<T>(array: T[], ...values: T[]) {
+  const exists = new Set(array)
   for (const value of values) {
-    const index = array.indexOf(value)
-    index < 0 && array.push(value)
+    if (!exists.has(value)) {
+      exists.add(value)
+      array.push(value)
+    }
   }
 }
 
@@ -91,10 +94,14 @@ export function copyEntity<T>(entity: Entity<T>) {
  * insertIntoEntity(people, matt, sam, liam)
  */
 export function insertIntoEntity<E extends Entity>(entity: E, ...values: ValueType<E>[]) {
+  const exists = new Set(entity.ids)
   for (const value of values) {
     const id = value[entity.key]
     entity.all[id] = value
-    insertIntoArray(entity.ids, id)
+    if (!exists.has(id)) {
+      exists.add(id)
+      entity.ids.push(id)
+    }
   }
 }
 
