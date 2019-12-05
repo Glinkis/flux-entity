@@ -3,7 +3,7 @@ import { Entity, Key, KeyType, Value, ValueType } from './type-helpers'
 export { Entity }
 
 /** */
-export function createEntityFactory<T extends Value>() {
+export function createEntityFactory<T extends Value = any>() {
   return function createEntity<K extends Key<T>>(key: K) {
     return { key, ids: [], all: {} as any } as Entity<T, K>
   }
