@@ -26,12 +26,12 @@
     "entities"
   ],
   "devDependencies": {
-    "@types/chai": "^4.2.0",
+    "@types/chai": "^4.2.6",
     "@types/mocha": "^5.2.7",
     "chai": "^4.2.0",
-    "mocha": "^6.2.0",
+    "mocha": "^6.2.2",
     "rimraf": "^3.0.0",
-    "ts-node": "^8.3.0",
-    "typescript": "^3.5.3"
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.3"
   }
 }
