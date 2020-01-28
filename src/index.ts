@@ -1,6 +1,6 @@
-import { Entity, Key, KeyType, Value, ValueType } from './type-helpers'
+import { Entity, Key, EntityKey, Value, ValueType } from './type-helpers'
 
-export { Entity }
+export { Entity, EntityKey }
 
 /** */
 export function createEntityFactory<T extends Value = any>() {
@@ -131,7 +131,7 @@ export function removeFromEntity<E extends Entity>(entity: E, ...values: ValueTy
  * @example
  * removeFromEntityById(people, 0, 2, 6)
  */
-export function removeFromEntityById<E extends Entity>(entity: E, ...ids: KeyType<E>[]) {
+export function removeFromEntityById<E extends Entity>(entity: E, ...ids: EntityKey<E>[]) {
   for (const id of ids) {
     delete entity.all[id]
     removeFromArray(entity.ids, id)

@@ -6,7 +6,7 @@ export interface Entity<T extends Value = any, K extends Key<T> = Key<T>> {
 
 export type Key<T> = { [K in keyof T]: T[K] extends PropertyKey ? K : never }[keyof T]
 
-export type KeyType<E> = E extends Entity<infer T, infer K> ? T[K] : never
+export type EntityKey<E> = E extends Entity<infer T, infer K> ? T[K] : never
 
 export type Value = Record<PropertyKey, any>
 
