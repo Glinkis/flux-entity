@@ -9,7 +9,6 @@ import {
   insertIntoEntity,
   removeFromEntity,
   removeFromEntityById,
-  EntityKey,
 } from '../src'
 
 interface Value {
