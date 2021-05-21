@@ -1,8 +1,8 @@
 module.exports = {
-  files: ['src/**/*.ts'],
-  tests: ['test/**/*.test.ts'],
-  testFramework: {
-    type: 'mocha',
-    path: __dirname,
+  files: ['src/index.ts'],
+  tests: ['test/index.test.ts'],
+  env: {
+    type: 'node',
+    runner: 'node',
   },
 }
