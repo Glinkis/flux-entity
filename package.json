@@ -1,6 +1,6 @@
 {
   "name": "flux-entity",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Utility library for the flux entity pattern",
   "main": "dist/lib/index.js",
   "module": "dist/es/index.js",
@@ -26,12 +26,12 @@
     "entities"
   ],
   "devDependencies": {
-    "@types/chai": "^4.2.18",
-    "@types/mocha": "^8.2.2",
+    "@types/chai": "^4.2.21",
+    "@types/mocha": "^8.2.3",
     "chai": "^4.3.4",
-    "mocha": "^8.4.0",
+    "mocha": "^9.0.2",
     "rimraf": "^3.0.2",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.2.4"
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5"
   }
 }
